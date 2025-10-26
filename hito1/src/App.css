@@ -1,0 +1,77 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.hero {
+  background: url('assets/imgs/Header.jpg') center/cover no-repeat;
+  height: 300px;
+  position: relative;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.hero div {
+  position: relative;
+  z-index: 1;
+}
+
+.card img {
+  height: 200px;
+  object-fit: cover;
+}
+
+.card {
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: scale(1.03);
+}
+
+.card-body {
+  background-color: #fff;
+  border-top: 1px solid #dee2e6;
+  padding: 1rem 1.25rem;
+}
+
+.card-title {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #212529;
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid #96999b;
+  margin: 0.5rem 0 0.8rem 0;
+}
+
+.text-muted {
+  color: #6c757d !important;
+  font-size: 0.95rem;
+}
+
+.card-body p {
+  margin-bottom: 0.4rem;
+}
+
+.card-body h5 {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.btn-sm {
+  font-size: 0.9rem;
+  padding: 0.3rem 0.75rem;
+}
+
+footer {
+  font-size: 0.9rem;
+}
