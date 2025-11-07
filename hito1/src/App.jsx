@@ -5,7 +5,6 @@ import Home from './components/Home'
 //import LoginPage from './components/LoginPage'
 import Cart from './components/Cart'
 import './App.css'
-import React, {useState} from 'react'
 
 function App() {
   return (
