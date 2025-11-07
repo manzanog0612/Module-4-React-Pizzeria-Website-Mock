@@ -1,0 +1,32 @@
+.pizza-item-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: 500;
+}
+
+.pizza-item-info {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    align-items: center;
+}
+
+.pizza-item-info img {
+    width: 80px;
+    height: auto;
+}
+
+.pizza-item-buy-section {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.counter
+{
+    font-weight: 700;
+}

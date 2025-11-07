@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import 'bootstrap/dist/css/bootstrap.min.css'; // 👈 Importa Bootstrap
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function RegistrerPage(){
     const [email, setEmail] = useState('') 

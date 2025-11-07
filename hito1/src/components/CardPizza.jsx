@@ -1,16 +1,21 @@
-export default function CardPizza(props) {
-  const formattedPrice = props.price.toLocaleString("es-CL");
+export default function CardPizza({key, name, price, ingredients, img}) {
+  const formattedPrice = price.toLocaleString("es-CL");
   return (
     <div className="col-md-4">
       <div className="card h-100">
-        <img src={props.img} className="card-img-top" alt={props.name} />
+        <img src={img} className="card-img-top" alt={name} />
         <div className="card-body">
-          <h5 className="card-title text-start">{props.name}</h5>
+          <h5 className="card-title text-start">{name}</h5>
 
           <hr className="divider" />
 
           <p className="text-muted mb-1 text-center">Ingredientes:</p>
-          <p className="mb-2 text-center">🍕 {props.ingredients.join(", ")}</p>
+          <p className="mb-2 text-center list-unstyled">
+            {
+              ingredients.map((ingredient, index) => (
+                <li key={index}>🍕 {ingredient}</li>
+              ))
+            }</p>
 
           <hr className="divider" />
 
