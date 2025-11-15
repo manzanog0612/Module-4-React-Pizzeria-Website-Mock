@@ -1,5 +1,5 @@
 import { pizzaCart } from "../assets/js/pizzas";
-import React, {useState} from 'react'
+import {useState, useEffect} from 'react'
 import '../assets/css/Cart.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -26,6 +26,11 @@ const handleDecrease = (id) => {
   setTotal(totalPrice);
   setCartItems(updatedCart);
 };
+
+ useEffect(() =>
+  {
+    console.log("Cart");
+  });
 
   return (
     <div className="p-4">

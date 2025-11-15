@@ -1,5 +1,13 @@
-export default function CardPizza({key, name, price, ingredients, img}) {
+import { useEffect } from "react";
+
+export default function CardPizza({name, price, ingredients, img}) {
   const formattedPrice = price.toLocaleString("es-CL");
+
+  useEffect(() =>
+  {
+    console.log("CardPizza");
+  });
+
   return (
     <div className="col-md-4">
       <div className="card h-100">
