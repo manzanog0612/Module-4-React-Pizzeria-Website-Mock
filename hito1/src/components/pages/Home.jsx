@@ -1,6 +1,6 @@
-import Header from "./Header"
-import CardPizza from "./CardPizza";
-import headerImg from '../assets/imgs/Header.jpg';
+import Header from "../Header"
+import CardPizza from "../CardPizza";
+import headerImg from '../../assets/imgs/Header.jpg';
 //import { pizzas } from "../assets/js/pizzas";
 import { useState, useEffect } from "react";
 

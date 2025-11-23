@@ -1,23 +1,36 @@
+import { Link, useNavigate } from "react-router-dom";
+
 export default function Navbar() {
-   const total = 25000;
-   const token = true;
-   const formattedPrice = total.toLocaleString("es-CL");
+  const total = 25000;
+  const token = false;
+  const formattedPrice = total.toLocaleString("es-CL");
+
+  const navigate = useNavigate();
+
+  const handleCartClick= () =>
+  {
+    navigate("/cart")
+  }
+
   return (
     
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
     <div className="container">
-      <a className="navbar-brand" href="#">Pizzería Mamma Mia!</a>
+      <h4 className="navbar-brand" href="#">Pizzería Mamma Mia!</h4>
       <div className="ms-auto d-flex align-items-center">
-        <a href="#" className="btn btn-warning btn-sm mx-1">Home</a>
-        {token ? 
-        <a href="#" className="btn btn-outline-light btn-sm mx-1">Profile</a> : 
-        <a href="#" className="btn btn-outline-light btn-sm mx-1">Login</a>
+        <Link to="/" className="btn btn-warning btn-sm mx-1">Home</Link>
+        <Link to="/register" className="btn btn-outline-light btn-sm mx-1">Register</Link>
+        <Link to="/login" className="btn btn-outline-light btn-sm mx-1">Login</Link>
+        <Link to="/profile" className="btn btn-outline-light btn-sm mx-1">Profile</Link> 
+        {/*token ? 
+        <Link to="/profile" className="btn btn-outline-light btn-sm mx-1">Profile</Link> : 
+        <Link to="/login" className="btn btn-outline-light btn-sm mx-1">Login</Link>
         }
         {token ? 
-        <a href="#" className="btn btn-outline-light btn-sm mx-1">Logout</a> :
-        <a href="#" className="btn btn-outline-light btn-sm mx-1">Register</a>
-        }
-        <button className="btn btn-outline-info btn-sm ms-3">
+        <Link to="/logout" className="btn btn-outline-light btn-sm mx-1">Logout</Link> :
+        <Link to="/register" className="btn btn-outline-light btn-sm mx-1">Register</Link>
+        */}
+        <button className="btn btn-outline-info btn-sm ms-3" onClick={handleCartClick}>
           <i className="bi bi-cart"></i> total: ${formattedPrice}
         </button>
       </div>

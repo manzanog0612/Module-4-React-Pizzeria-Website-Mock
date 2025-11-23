@@ -1,6 +1,6 @@
-import { pizzaCart } from "../assets/js/pizzas";
+import { pizzaCart } from "../../assets/js/pizzas";
 import {useState, useEffect} from 'react'
-import '../assets/css/Cart.css'
+import '../../assets/css/Cart.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function Cart() {

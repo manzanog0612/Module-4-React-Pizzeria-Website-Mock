@@ -1,24 +1,18 @@
-import React, {useState} from 'react'
-import 'bootstrap/dist/css/bootstrap.min.css';
+import {useState} from 'react'
 
-export default function RegistrerPage(){
+export default function LoginPage(){
     const [email, setEmail] = useState('') 
     const [contraseña, setContraseña] = useState('')
-    const [confContraseña, setConfContraseña] = useState('')
     const onClickHandler = (event)=>{
         event.preventDefault()
 
-        if (email == '' || contraseña == '' || confContraseña == '')
+        if (email == '' || contraseña == '')
         {
             alert("Formulario no enviado, faltan completar datos")
         }
         else if (contraseña.length < 6)
         {
             alert("Formulario no enviado, la contraseña debe tener al menos 6 caracteres")
-        }
-        else if (contraseña != confContraseña)
-        {
-            alert("Formulario no enviado, la confirmación de la contraseña no es igual a la contraseña")
         }
         else
         {
@@ -27,8 +21,7 @@ export default function RegistrerPage(){
 
         console.log({
             email,
-            contraseña,
-            confContraseña
+            contraseña
         })
     }
     return (
@@ -39,7 +32,7 @@ export default function RegistrerPage(){
           <div className="mb-3">
             <label className="form-label">Email</label>
             <input
-              type="text"
+              type="email"
               className="form-control"
               placeholder="Enter your email"
               value={email}
@@ -57,17 +50,7 @@ export default function RegistrerPage(){
               onChange={(e) => setContraseña(e.target.value)}
             />
           </div>
-          <div className="mb-3">
-            <label className="form-label">Confirmar Contraseña</label>
-            <input 
-              type="password"
-               className="form-control"
-              placeholder="Confirmar contraseña" 
-              value={confContraseña}
-              onChange={(e) => setConfContraseña(e.target.value)}
-            />
-          </div>
-        
+
           <button type="submit" className="btn btn-primary w-100">
             Login
           </button>
