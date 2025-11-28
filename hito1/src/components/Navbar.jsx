@@ -1,7 +1,9 @@
 import { Link, useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { CartContext } from "./contexts/CartContext";
 
-export default function Navbar() {
-  const total = 25000;
+export default function Navbar() {  
+  const {total} = useContext(CartContext)
   const token = false;
   const formattedPrice = total.toLocaleString("es-CL");
 
@@ -9,12 +11,11 @@ export default function Navbar() {
 
   const handleCartClick= () =>
   {
-    navigate("/cart")
+      navigate("/cart")
   }
 
   return (
-    
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+  <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
     <div className="container">
       <h4 className="navbar-brand" href="#">Pizzería Mamma Mia!</h4>
       <div className="ms-auto d-flex align-items-center">

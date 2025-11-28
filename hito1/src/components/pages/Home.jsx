@@ -1,23 +1,11 @@
 import Header from "../Header"
 import CardPizza from "../CardPizza";
 import headerImg from '../../assets/imgs/Header.jpg';
-//import { pizzas } from "../assets/js/pizzas";
-import { useState, useEffect } from "react";
+import { useContext } from "react";
+import { CartContext } from "../contexts/CartContext";
 
 export default function Home() {
-  const apiUrl = "http://localhost:5000/api/pizzas";
-  const [pizzas, setPizzas] = useState([]);
-
-  const getPizzas = async () =>  {
-    const res = await fetch(apiUrl);
-    const data = await res.json();
-    setPizzas(data);
-    console.log(data);
-  }
-
-  useEffect(() => {
-    getPizzas();
-  }, []);
+  const { pizzas, handleIncrease} = useContext(CartContext)
 
   return (
     <>
@@ -32,6 +20,7 @@ export default function Home() {
               price={pizza.price}
               ingredients={pizza.ingredients}
               img={pizza.img}
+              onAddToCart={() => handleIncrease(pizza.id)}
             />
           ))}
         </div>

@@ -1,8 +1,5 @@
-import React from 'react'
-
 export default function Profile() {
   const email = "randomemail@gmail.com"
- 
       return (
       <div className="d-flex justify-content-center align-items-center vh-100 bg-light">
         <div className="p-4" style={{ width: '100%', maxWidth: '400px' }}>

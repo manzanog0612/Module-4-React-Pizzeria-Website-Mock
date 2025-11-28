@@ -1,36 +1,10 @@
-import { pizzaCart } from "../../assets/js/pizzas";
-import {useState, useEffect} from 'react'
+import {useContext} from 'react'
 import '../../assets/css/Cart.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { CartContext } from '../contexts/CartContext';
 
 export default function Cart() {
-  const [cartItems, setCartItems] = useState(pizzaCart);
-  const [total, setTotal] = useState(cartItems.reduce((acc, pizza) => acc + pizza.price * pizza.count, 0));
-
-  const handleIncrease = (id) => {
-    const updatedCart = cartItems.map((pizza) =>
-      pizza.id === id ? { ...pizza, count: pizza.count + 1 } : pizza
-    );
-    const totalPrice = updatedCart.reduce((acc, pizza) => acc + pizza.price * pizza.count, 0);
-    setTotal(totalPrice);
-    setCartItems(updatedCart);
-  };
-
-const handleDecrease = (id) => {
-  const updatedCart = cartItems
-    .map((pizza) =>
-      pizza.id === id ? { ...pizza, count: pizza.count - 1 } : pizza
-    )
-    .filter((pizza) => pizza.count > 0);
-    const totalPrice = updatedCart.reduce((acc, pizza) => acc + pizza.price * pizza.count, 0);
-  setTotal(totalPrice);
-  setCartItems(updatedCart);
-};
-
- useEffect(() =>
-  {
-    console.log("Cart");
-  });
+  const { cartItems, total, handleIncrease, handleDecrease} = useContext(CartContext)
 
   return (
     <div className="p-4">

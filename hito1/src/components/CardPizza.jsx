@@ -1,12 +1,5 @@
-import { useEffect } from "react";
-
-export default function CardPizza({name, price, ingredients, img}) {
+export default function CardPizza({name, price, ingredients, img, onAddToCart}) {
   const formattedPrice = price.toLocaleString("es-CL");
-
-  useEffect(() =>
-  {
-    console.log("CardPizza");
-  });
 
   return (
     <div className="col-md-4">
@@ -35,9 +28,9 @@ export default function CardPizza({name, price, ingredients, img}) {
             <a href="#" className="btn btn-outline-dark btn-sm">
               Ver Más
             </a>
-            <a href="#" className="btn btn-dark btn-sm">
+            <button href="#" className="btn btn-dark btn-sm" onClick={onAddToCart}>
               Añadir 🛒
-            </a>
+            </button>
           </div>
         </div>
       </div>
