@@ -2,12 +2,14 @@ import {useContext} from 'react'
 import '../../assets/css/Cart.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { CartContext } from '../contexts/CartContext';
+import { UserContext } from '../contexts/UserContext';
 
 export default function Cart() {
   const { cartItems, total, handleIncrease, handleDecrease} = useContext(CartContext)
+  const {token} = useContext(UserContext)
 
   return (
-    <div className="p-4">
+    <div className="p-4 vh-100">
         <p className="fw-normal fs-5">Detalles del pedido:</p>
         <div className="gap-3 d-flex flex-column mx-auto">
             {cartItems.map((pizza) => (
@@ -25,7 +27,7 @@ export default function Cart() {
             </div>))}
         </div>
         <h2 className="fw-normal fs-2 mt-5 fw-bold">Total: ${total}</h2>
-        <button className="btn bg-dark text-white">Pagar</button>
+        <button className={token ? "btn bg-dark text-white" : "btn bg-inactive text-white"}>Pagar</button>
     </div>
   );
 }

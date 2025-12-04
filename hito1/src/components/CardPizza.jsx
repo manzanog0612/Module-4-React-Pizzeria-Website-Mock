@@ -1,4 +1,6 @@
-export default function CardPizza({name, price, ingredients, img, onAddToCart}) {
+import { NavLink } from "react-router-dom";
+
+export default function CardPizza({id, name, price, ingredients, img, onAddToCart}) {
   const formattedPrice = price.toLocaleString("es-CL");
 
   return (
@@ -25,9 +27,7 @@ export default function CardPizza({name, price, ingredients, img, onAddToCart}) 
           </h5>
 
           <div className="d-flex justify-content-center gap-2">
-            <a href="#" className="btn btn-outline-dark btn-sm">
-              Ver Más
-            </a>
+            <NavLink to={"/pizzas/" + id}  className="btn btn-outline-dark btn-sm">Ver Más</NavLink>
             <button href="#" className="btn btn-dark btn-sm" onClick={onAddToCart}>
               Añadir 🛒
             </button>

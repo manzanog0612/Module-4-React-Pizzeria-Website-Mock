@@ -1,19 +1,21 @@
 import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 
 export default function Pizza() {
-    const apiUrl = "http://localhost:5000/api/pizzas/p001";
-      const [pizza, setPizza] = useState({});
-    
-      const getPizza = async () =>  {
-        const res = await fetch(apiUrl);
-        const data = await res.json();
-        setPizza(data);
-        console.log(data);
-      }
-    
-      useEffect(() => {
-        getPizza();
-      }, []);
+  const { id } = useParams();
+  const [pizza, setPizza] = useState({});
+
+  const getPizza = async () =>  {
+    const apiUrl = "http://localhost:5000/api/pizzas/" + id;
+    const res = await fetch(apiUrl);
+    const data = await res.json();
+    setPizza(data);
+    console.log(data);
+  }
+
+  useEffect(() => {
+    getPizza();
+  }, []);
 
   return (
     <div className="container my-5">
