@@ -21,11 +21,11 @@ function App() {
       <Navbar/>
       <Routes>      
         <Route path="/" element={<Home/>}/>
-        <Route path="/register" element={!token ? <RegistrerPage/> : <Home/>}/>
-        <Route path="/login" element={!token ? <LoginPage/> : <Home/>}/>
+        <Route path="/register" element={token == "" ? <RegistrerPage/> : <Home/>}/>
+        <Route path="/login" element={token == "" ? <LoginPage/> : <Home/>}/>
         <Route path="/cart" element={<Cart/>}/> 
         <Route path="/pizzas/:id" element={<Pizza/>}/> 
-        <Route path="/profile" element={ token ? <Profile/> : <LoginPage/> }/> 
+        <Route path="/profile" element={ token != "" ? <Profile/> : <LoginPage/> }/> 
         <Route path="/*" element={<NotFound/>}/> 
       </Routes>
       <Footer/>

@@ -5,7 +5,7 @@ import { CartContext } from '../contexts/CartContext';
 import { UserContext } from '../contexts/UserContext';
 
 export default function Cart() {
-  const { cartItems, total, handleIncrease, handleDecrease} = useContext(CartContext)
+  const { cartItems, total, handleIncrease, handleDecrease, checkout} = useContext(CartContext)
   const {token} = useContext(UserContext)
 
   return (
@@ -27,7 +27,7 @@ export default function Cart() {
             </div>))}
         </div>
         <h2 className="fw-normal fs-2 mt-5 fw-bold">Total: ${total}</h2>
-        <button className={token ? "btn bg-dark text-white" : "btn bg-inactive text-white"}>Pagar</button>
+        <button className={token != "" ? "btn bg-dark text-white" : "btn bg-inactive text-white"} onClick= {() =>checkout(token)}>Pagar</button>
     </div>
   );
 }

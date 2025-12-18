@@ -1,5 +1,4 @@
 import { createContext, useState, useEffect } from "react";
-//import { pizzaCart } from "../../assets/js/pizzas";
 
 export const CartContext = createContext({})
 
@@ -14,7 +13,33 @@ export const CartContextProvider = ({children}) =>{
         getPizzas();
     }, []);
 
-    const getPizzas = async () =>  {
+    const checkout = async (token) => {
+        try {
+            const res = await fetch("http://localhost:5000/api/checkouts", {
+                method: "POST",
+                headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+                },
+                body: JSON.stringify({
+                cart: cartItems,
+                }),
+            })
+            const data = await res.json();
+            console.log("req checkouts - respuesta del servidor: ", data);
+            if (data.error){
+                alert(data.error)
+            }
+            else{
+                alert(data.message)
+            }
+        }
+        catch (err){
+            alert("Hubo un error: " + err)
+        }
+    }
+
+    const getPizzas = async () => {
         const res = await fetch(apiUrl);
         const data = await res.json();
         setPizzas(data);
@@ -57,7 +82,8 @@ export const CartContextProvider = ({children}) =>{
         setTotal,
         pizzas,
         handleIncrease,
-        handleDecrease
+        handleDecrease,
+        checkout
     }
 
     return (

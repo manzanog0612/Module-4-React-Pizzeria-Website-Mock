@@ -1,35 +1,26 @@
-import React, {useState} from 'react'
+import {useContext, useState} from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { UserContext } from '../contexts/UserContext';
 
 export default function RegistrerPage(){
+    const {register} = useContext(UserContext)
+
     const [email, setEmail] = useState('') 
     const [contraseña, setContraseña] = useState('')
     const [confContraseña, setConfContraseña] = useState('')
-    const onClickHandler = (event)=>{
+
+    const onClickHandler = async (event)=>{
         event.preventDefault()
 
-        if (email == '' || contraseña == '' || confContraseña == '')
+        if (contraseña != confContraseña)
         {
-            alert("Formulario no enviado, faltan completar datos")
-        }
-        else if (contraseña.length < 6)
-        {
-            alert("Formulario no enviado, la contraseña debe tener al menos 6 caracteres")
-        }
-        else if (contraseña != confContraseña)
-        {
-            alert("Formulario no enviado, la confirmación de la contraseña no es igual a la contraseña")
+          alert("Formulario no enviado, la confirmación de la contraseña no es igual a la contraseña")
         }
         else
         {
-            alert("Formulario enviado!")
+          await register(email, contraseña);      
+          console.log({email, contraseña});
         }
-
-        console.log({
-            email,
-            contraseña,
-            confContraseña
-        })
     }
     return (
     <div className="d-flex justify-content-center align-items-center vh-100 bg-light">
@@ -42,6 +33,7 @@ export default function RegistrerPage(){
               type="text"
               className="form-control"
               placeholder="Enter your email"
+              required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
@@ -53,6 +45,7 @@ export default function RegistrerPage(){
               type="password"
               className="form-control"
               placeholder="Enter your password"
+              required
               value={contraseña}
               onChange={(e) => setContraseña(e.target.value)}
             />
@@ -63,6 +56,7 @@ export default function RegistrerPage(){
               type="password"
                className="form-control"
               placeholder="Confirm Password" 
+              required
               value={confContraseña}
               onChange={(e) => setConfContraseña(e.target.value)}
             />
